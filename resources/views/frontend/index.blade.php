@@ -14,7 +14,11 @@
     <!-- fontawesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 <body>
     <div class="bg-white">
         <nav class="navbar navbar-expand-sm navbar-light bg-transparent container-fluid mainNav">
@@ -61,44 +65,30 @@
         <section id="quiz-window" class="container-fluid mt-4 hide-form">
             <div class="quizWidthDiv maxWidth90">
                 @foreach ($getQuestions as $key => $item)
+                <div class="hidden" id="removeAddClassHidden{{$key}}">
+
+
                     <div class="mb-3">
-                        <{{ $item->catgeory->name }}>
+                        {{ $item->catgeory->name }}
                     </div>
                     <div>
                         <p><label for="" id="question-id" class="mr-4">{{ $key +1 }}</label> <span
                                 class="question">{{ $item->QuestionText }}</span> </span></p>
                         <div class="row ml-4">
-                            @foreach ($item->options as $item2)
+                            @foreach ($item->options as $key2 => $item2)
                             <div class="col-lg-6">
                                 <p>
-                                    <input type="radio" id="q1_opt1" class="mr-3" name="q1_answer">
-                                    <label for="q1_opt1">{{ $item2->answer }}</label>
+                                    <input type="radio" id="q1_opt{{$key}}{{$key2}}" class="mr-3" name="q{{$key}}_answer">
+                                    <label for="q1_opt{{$key}}{{$key2}}">{{ $item2->answer }}</label>
                                 </p>
                             </div>
                             @endforeach
 
-                            {{-- <div class="col-lg-6">
-                                <p>
-                                    <input type="radio" id="q1_opt2" class="mr-3" name="q1_answer">
-                                    <label for="q1_opt2">Answer 2</label>
-                                </p>
-                            </div> --}}
+
                         </div>
-                        {{-- <div class="row ml-4 mt-2">
-                            <div class="col-lg-6">
-                                <p>
-                                    <input type="radio" id="q1_opt3" class="mr-3" name="q1_answer">
-                                    <label for="q1_opt3">Answer 3</label>
-                                </p>
-                            </div>
-                            <div class="col-lg-6">
-                                <p>
-                                    <input type="radio" id="q1_opt4" class="mr-3" name="q1_answer">
-                                    <label for="q1_opt4">Answer 4</label>
-                                </p>
-                            </div>
-                        </div> --}}
+
                     </div>
+                </div>
                 @endforeach
 
                 {{-- <div class="mt-4">
@@ -133,8 +123,8 @@
         </div>
     </div> --}}
                 <div class="nextPrevBtnDiv">
-                    <button type="button" class="nextPrevBtns" id="prev-btn">Previous</button>
-                    <button type="button" class="nextPrevBtns" id="next-btn">Next</button>
+                    <button type="button" class="nextPrevBtns previousButtonClick" id="prev-btn">Previous</button>
+                    <button type="button" class="nextPrevBtns nextButtonClick" id="next-btn">Next</button>
 
                 </div>
 
@@ -216,8 +206,51 @@
         </section>
     </div>
     <script src="{{ asset('app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script>
+        $("#removeAddClassHidden0").removeClass('hidden');
+        $("#removeAddClassHidden1").removeClass('hidden');
+
+        let nextCount = 1;
+        let previousCount = 0;
+        $(".nextButtonClick").click(function() {
+            console.log("removeAddClassHidden"+Number(nextCount+1));
+            console.log("removeAddClassHidden"+Number(nextCount+2));
+            console.log("removeAddClassHidden"+nextCount);
+            console.log("removeAddClassHidden"+Number(nextCount-1));
+
+            $("#removeAddClassHidden"+Number(nextCount+1)).removeClass("hidden");
+            $("#removeAddClassHidden"+Number(nextCount+2)).removeClass("hidden");
+
+
+            $("#removeAddClassHidden"+nextCount).addClass("hidden");
+            $("#removeAddClassHidden"+Number(nextCount-1)).addClass("hidden");
+            nextCount = nextCount + 2;
+        })
+
+
+        $(".previousButtonClick").click(function() {
+            console.log("removeAddClassHidden"+Number(nextCount+1));
+            console.log("removeAddClassHidden"+Number(nextCount+2));
+            console.log("removeAddClassHidden"+nextCount);
+            console.log("removeAddClassHidden"+Number(nextCount-1));
+
+
+
+
+            $("#removeAddClassHidden"+nextCount).addClass("hidden");
+            $("#removeAddClassHidden"+Number(nextCount-1)).addClass("hidden");
+
+            $("#removeAddClassHidden"+Number(nextCount-2)).removeClass("hidden");
+            $("#removeAddClassHidden"+Number(nextCount-3)).removeClass("hidden");
+            nextCount = nextCount - 2;
+        })
+
+
+
     </script>
 </body>
 
