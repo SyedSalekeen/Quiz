@@ -1,0 +1,373 @@
+@font-face {
+    font-family: 'RealTextSemilight';
+    src: url(./font/RealTextSemilight.otf);
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'RealTextSemilight';
+}
+.mainNav{
+    display: flex;
+    align-items: baseline;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+.progress-bar{
+    background-color: #64C6CF !important;
+}
+.nav-link
+{
+    color:white !important;
+    font-size: 20px;
+}
+
+.nav-link:hover
+{
+    color:#262626 !important;
+}
+
+.active
+{
+    color:#262626 !important;
+}
+
+.navbar-brand
+{
+    font-size: 32px !important;
+    font-weight: 900;
+    color:#262626 !important;
+}
+
+/* .container
+{
+   max-width: 60%;
+   min-width: 480px !important;
+} */
+
+form
+{
+    background-color: #262626;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 30px;
+    color:#262626;
+    margin-bottom: 50px;
+
+}
+
+.hide-form
+{
+    display: none;
+}
+
+.input-field
+{
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    outline: none;
+}
+
+
+hr
+{
+    background-color: #262626;
+    height: 2px;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* label
+{
+    font-size: 20px;
+    padding: 5px;
+    padding-left: 0;
+    color:#262626;
+} */
+
+
+#signup-btn, #login-btn
+{
+    width: 100%;
+    background-color: #262626;
+    border: none;
+    color:white;
+    font-size: 22px;
+    border: 2px solid #262626;
+    padding: 10px 20px;
+}
+
+#signup-btn:hover, #login-btn:hover, #start-quiz-btn:hover
+{
+    background-color:rgb(184, 86, 68);
+}
+
+#create-heading, #login-heading
+{
+    color:#262626;
+}
+
+#login-btn
+{
+    margin-bottom: 20px;
+}
+
+
+.topic-check
+{
+    position: relative;
+    top: 2px;
+    height: 20px;
+    width: 20px;
+}
+
+.topic-text, .topic-list
+{
+    display: none;
+}
+
+.topic-list
+{
+    position: relative;
+    left:20px;
+}
+
+#start-quiz-btn
+{
+    background-color: #262626;
+    border: none;
+    color:white;
+    font-size: 22px;
+    padding: 10px 20px;
+}
+
+#question
+{
+    font-size: 22px;
+    color:#262626;
+}
+#question-id
+{
+    padding: 0;
+}
+
+.option-btn
+{
+    width: 100%;
+    background-color: #262626 !important;
+    color:white;
+    font-size: 18px;
+    border: none
+}
+
+.option-btn:hover
+{
+    background-color: #262626 !important;
+}
+
+.option-btn-checked
+{
+    background-color: #262626 !important;
+    border: none;
+}
+
+
+
+#next-btn, #prev-btn,#start-btn,#download-btn,#submit-btn
+{
+    background-color: #64C6CF;
+    border: none;
+    font-size: 16px;
+}
+
+#result-btn:hover
+{
+    background-color: #262626;
+}
+
+
+/* Loader */
+.loader {
+    border: 10px solid #262626;
+    border-radius: 80%;
+    border-top: 10px solid #262626;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: spin 1s linear infinite; /* Safari */
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+.maxWidth90{
+    max-width: 90%;
+    margin: 0 auto;
+}
+.quizWidthDiv{
+    
+}
+.nextPrevBtnDiv{
+    padding: 30px;
+    max-width: 60%;
+    justify-content: space-between;
+    display: flex;
+}
+.nextPrevBtns{
+    padding: 5px 70px;
+    border-radius: 7px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+/*loader end */
+
+#result-img
+{
+    height: 200px;
+    margin: 0 auto;
+}
+
+#percentage, #score, #quiz-result-type
+{
+    color:#262626;
+}
+
+@media screen and (max-width:768px){
+    .margin-on-mob{
+        margin-top:20px;
+    }
+    .navbar-brand{
+        font-size: 20px !important;
+    }
+    .nextPrevBtns{
+        padding: 3px 30px;
+        margin: 0 7px;
+    }
+    .companyInpDivs{
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* custom radio  */
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #262626;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #64C6CF;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+/* custom checkbox */
+
+.form-group-custom {
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  .form-group-custom input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .form-group-custom label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .form-group-custom label:before {
+    content:'';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #64C6CF;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .form-group-custom input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 6px;
+    height: 14px;
+    border: solid #64C6CF;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+/* custom checkbox end */
+/* screen1 */
+#screen1 img{
+    max-width: 40%;
+}
+.mt-60{
+    margin-top: 60px;
+}
+#companyScreen input,#lastScreen input{
+    border: 3px solid #64C6CF;
+    padding: 0 5px;
+    color: #64C6CF;
+    width: 300px;
+}
+.companyInpDivs{
+    display: grid;
+    grid-template-columns: 10% auto;
+}
