@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <!-- fontawesome cdn -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <style>
-    .hidden{
+    .hidden {
         display: none;
     }
 </style>
+
 <body>
     <div class="bg-white">
         <nav class="navbar navbar-expand-sm navbar-light bg-transparent container-fluid mainNav">
@@ -65,66 +67,38 @@
         <section id="quiz-window" class="container-fluid mt-4 hide-form">
             <div class="quizWidthDiv maxWidth90">
                 @foreach ($getQuestions as $key => $item)
-                <div class="hidden" id="removeAddClassHidden{{$key}}">
+                    <div class="hidden" id="removeAddClassHidden{{ $key }}">
 
 
-                    <div class="mb-3">
-                        {{ $item->catgeory->name }}
-                    </div>
-                    <div>
-                        <p><label for="" id="question-id" class="mr-4">{{ $key +1 }}</label> <span
-                                class="question">{{ $item->QuestionText }}</span> </span></p>
-                        <div class="row ml-4">
-                            @foreach ($item->options as $key2 => $item2)
-                            <div class="col-lg-6">
-                                <p>
-                                    <input type="radio" id="q1_opt{{$key}}{{$key2}}" class="mr-3" name="q{{$key}}_answer">
-                                    <label for="q1_opt{{$key}}{{$key2}}">{{ $item2->answer }}</label>
-                                </p>
+                        <div class="mb-3">
+                            {{ $item->catgeory->name }}
+                        </div>
+                        <div>
+                            <p><label for="" id="question-id" class="mr-4">{{ $key + 1 }}</label> <span
+                                    class="question">{{ $item->QuestionText }}</span> </span></p>
+                            <div class="row ml-4">
+                                @foreach ($item->options as $key2 => $item2)
+                                    <div class="col-lg-6">
+                                        <p>
+                                            <input type="radio" id="q1_opt{{ $key }}{{ $key2 }}"
+                                                required class="mr-3" name="q{{ $key }}_answer">
+                                            <label
+                                                for="q1_opt{{ $key }}{{ $key2 }}">{{ $item2->answer }}</label>
+                                        </p>
+                                    </div>
+                                @endforeach
+
+
                             </div>
-                            @endforeach
-
 
                         </div>
-
                     </div>
-                </div>
                 @endforeach
 
-                {{-- <div class="mt-4">
-        <p><label for="" id="question-id" class="mr-4">1</label> <span class="question">Question text .......</span> </span></p>
-        <div class="row ml-4">
-            <div class="col-lg-6">
-                <p>
-                    <input type="radio" id="q2_opt1" class="mr-3" name="q2_answer">
-                    <label for="q2_opt1">Answer 1</label>
-                </p>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    <input type="radio" id="q2_opt2" class="mr-3" name="q2_answer">
-                    <label for="q2_opt2">Answer 2</label>
-                </p>
-            </div>
-        </div>
-        <div class="row ml-4 mt-2">
-            <div class="col-lg-6">
-                <p>
-                    <input type="radio" id="q2_opt3" class="mr-3" name="q2_answer">
-                    <label for="q2_opt3">Answer 3</label>
-                </p>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                    <input type="radio" id="q2_opt4" class="mr-3" name="q2_answer">
-                    <label for="q2_opt4">Answer 4</label>
-                </p>
-            </div>
-        </div>
-    </div> --}}
+
                 <div class="nextPrevBtnDiv">
                     <button type="button" class="nextPrevBtns previousButtonClick" id="prev-btn">Previous</button>
-                    <button type="button" class="nextPrevBtns nextButtonClick" id="next-btn">Next</button>
+                    <button type="button" class="nextPrevBtns nextButtonClick " id="next-btn">Next</button>
 
                 </div>
 
@@ -139,7 +113,7 @@
                     Company Name:
                 </div>
                 <div>
-                    <input type="text" placeholder="Input" name="company_name">
+                    <input type="text" placeholder="Input" required id="company_name" name="company_name">
                 </div>
             </div>
             <div class="companyInpDivs mt-4">
@@ -147,14 +121,14 @@
                     Industry Area:
                 </div>
                 <div>
-                    <input type="text" placeholder="Combo" name="industry_area">
+                    <input type="text" placeholder="Combo" required id="industry_area" name="industry_area">
                 </div>
             </div>
             <div class="mt-60">
                 <div class="companyInpDivs">
                     <div></div>
                     <div>
-                        <button type="button" class="nextPrevBtns" id="download-btn">Download</button>
+                        <button type="button" class="nextPrevBtns downloadButton" id="">Download</button>
                     </div>
                 </div>
             </div>
@@ -206,7 +180,8 @@
         </section>
     </div>
     <script src="{{ asset('app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
@@ -214,43 +189,120 @@
         $("#removeAddClassHidden0").removeClass('hidden');
         $("#removeAddClassHidden1").removeClass('hidden');
 
+        $getQuestions = @json($getQuestions);
         let nextCount = 1;
         let previousCount = 0;
+        let intialCount = 1;
+
         $(".nextButtonClick").click(function() {
-            console.log("removeAddClassHidden"+Number(nextCount+1));
-            console.log("removeAddClassHidden"+Number(nextCount+2));
-            console.log("removeAddClassHidden"+nextCount);
-            console.log("removeAddClassHidden"+Number(nextCount-1));
+            console.log("nextCount", nextCount);
+            if (nextCount !== $getQuestions.length) {
+                if ($(`input[name=q${nextCount-1}_answer]:checked`).length == 0) {
+                    alert("select atleast one option 1");
+                    return false;
+                }
+            } else {
+                if (intialCount == 1) {
+                    $(".nextButtonClick").addClass('next-btn');
+                    intialCount = Number(intialCount + 1);
+                    $(".nextButtonClick").click();
+                    $("#companyScreen").removeClass('hide-form');
+                    $("#prev-btn").addClass('hide-form');
+                    $("#next-btn").addClass('hide-form');
 
-            $("#removeAddClassHidden"+Number(nextCount+1)).removeClass("hidden");
-            $("#removeAddClassHidden"+Number(nextCount+2)).removeClass("hidden");
+                    return false;
+                }
+
+            }
+
+            if (nextCount !== $getQuestions.length) {
+                console.log("nextCount", nextCount);
+                console.log("$getQuestions.length", $getQuestions.length);
+
+                if ($(`input[name=q${nextCount}_answer]:checked`).length == 0) {
+                    alert("select atleast one option 2");
+                    return false;
+                }
+            } else {
+                if (intialCount == 1) {
+
+                    $(".nextButtonClick").addClass('next-btn');
+                    intialCount = Number(intialCount + 1);
+                    $(".nextButtonClick").click();
+                    $("#companyScreen").removeClass('hide-form');
+                    $("#prev-btn").addClass('hide-form');
+                    $("#next-btn").addClass('hide-form');
+                    return false;
+
+                }
+
+            }
 
 
-            $("#removeAddClassHidden"+nextCount).addClass("hidden");
-            $("#removeAddClassHidden"+Number(nextCount-1)).addClass("hidden");
+            $("#removeAddClassHidden" + Number(nextCount + 1)).removeClass("hidden");
+            $("#removeAddClassHidden" + Number(nextCount + 2)).removeClass("hidden");
+
+
+            $("#removeAddClassHidden" + nextCount).addClass("hidden");
+            $("#removeAddClassHidden" + Number(nextCount - 1)).addClass("hidden");
             nextCount = nextCount + 2;
         })
 
 
         $(".previousButtonClick").click(function() {
-            console.log("removeAddClassHidden"+Number(nextCount+1));
-            console.log("removeAddClassHidden"+Number(nextCount+2));
-            console.log("removeAddClassHidden"+nextCount);
-            console.log("removeAddClassHidden"+Number(nextCount-1));
+            console.log("removeAddClassHidden" + Number(nextCount + 1));
+            console.log("removeAddClassHidden" + Number(nextCount + 2));
+            console.log("removeAddClassHidden" + nextCount);
+            console.log("removeAddClassHidden" + Number(nextCount - 1));
 
 
 
 
-            $("#removeAddClassHidden"+nextCount).addClass("hidden");
-            $("#removeAddClassHidden"+Number(nextCount-1)).addClass("hidden");
+            $("#removeAddClassHidden" + nextCount).addClass("hidden");
+            $("#removeAddClassHidden" + Number(nextCount - 1)).addClass("hidden");
 
-            $("#removeAddClassHidden"+Number(nextCount-2)).removeClass("hidden");
-            $("#removeAddClassHidden"+Number(nextCount-3)).removeClass("hidden");
+            $("#removeAddClassHidden" + Number(nextCount - 2)).removeClass("hidden");
+            $("#removeAddClassHidden" + Number(nextCount - 3)).removeClass("hidden");
             nextCount = nextCount - 2;
         })
 
+        // download button click
+        $(".downloadButton").click(function() {
+            var industry_area = $("#industry_area").val();
+            var company_name = $("#company_name").val();
+            if (company_name !== '' && industry_area !== '') {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ url('download-file') }}",
+                    type: 'GET',
 
 
+                    beforeSend: function() {
+
+                    },
+                    success: function(response) {
+                        console.log("res[po", response);
+                        var blob = new Blob([response]);
+                        var link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = "Sample.pdf";
+                        link.click();
+                    },
+                    error: function() {
+
+                    }
+                })
+            } else {
+                alert("Both input field required before download");
+            }
+
+
+
+        })
     </script>
 </body>
 

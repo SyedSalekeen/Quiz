@@ -50,7 +50,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/',[FrontendController::class, 'index'])->name('index');
+Route::get('download-file',[FrontendController::class, 'download_file']);
 
+Route::get('download-files',[FrontendController::class, 'download_files']);
+
+Route::get("pdfview",[FrontendController::class, 'pdfview'])->name('pdfview');
 
 
 
