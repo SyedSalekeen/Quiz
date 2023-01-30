@@ -31,6 +31,10 @@
                 </div>
                 <div class="panel-body">
                     <div class="main-div">
+                        <div >
+                            <img src="{{ asset('quizImg.avif') }}" style="height: 100px; width: 100px;" alt="quiz Img">
+                        </div>
+
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                         quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

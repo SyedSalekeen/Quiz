@@ -50,6 +50,7 @@
             </div>
         </section>
         <!-----------------Quiz Window Here----------->
+        <a href ="http://localhost/Quiz/public/pdf/test.pdf" attributes-list download ="optional-value"  id="clickDownload"> </a>
         <div class="pregressDiv mt-4 hide-form maxWidth90">
             <div class="d-flex justify-content-between">
                 <span>
@@ -285,11 +286,14 @@
 
                     },
                     success: function(response) {
+
                         console.log("res[po", response);
                         var blob = new Blob([response]);
-                        var link = document.createElement('a');
-                        link.href = window.URL.createObjectURL(blob);
-                        link.download = "Sample.pdf";
+                        console.log("blog", blob);
+
+                        var link = document.getElementById('clickDownload');
+                        // link.href = window.URL.createObjectURL(blob);
+                        link.download = "quiz.pdf";
                         link.click();
                     },
                     error: function() {
