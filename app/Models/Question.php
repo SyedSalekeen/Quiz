@@ -13,4 +13,12 @@ class Question extends Model
     {
         return $this->belongsTo(Category::class, 'CatID');
     }
+
+
+    public function options()
+    {
+        return $this->hasMany(QuestionAnswer::class, 'QuestionID');
+    }
+
+
 }
