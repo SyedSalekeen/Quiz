@@ -29,4 +29,8 @@ class FrontendController extends Controller
     public function pdfview() {
         return view('pdf.pdf');
     }
+
+    public function submit_quiz(Request $request) {
+        dd($request->all());
+    }
 }

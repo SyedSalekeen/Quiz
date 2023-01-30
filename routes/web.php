@@ -55,6 +55,7 @@ Route::get('download-file',[FrontendController::class, 'download_file']);
 Route::get('download-files',[FrontendController::class, 'download_files']);
 
 Route::get("pdfview",[FrontendController::class, 'pdfview'])->name('pdfview');
+Route::post('submit_quiz',[FrontendController::class, 'submit_quiz'])->name('submit_quiz');
 
 
 

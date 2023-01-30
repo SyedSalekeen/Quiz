@@ -50,7 +50,8 @@
             </div>
         </section>
         <!-----------------Quiz Window Here----------->
-        <a href ="http://localhost/Quiz/public/pdf/test.pdf" attributes-list download ="optional-value"  id="clickDownload"> </a>
+        <a href="http://localhost/Quiz/public/pdf/test.pdf" attributes-list download="optional-value"
+            id="clickDownload"> </a>
         <div class="pregressDiv mt-4 hide-form maxWidth90">
             <div class="d-flex justify-content-between">
                 <span>
@@ -65,120 +66,125 @@
                     aria-valuemax="100"></div>
             </div>
         </div>
-        <section id="quiz-window" class="container-fluid mt-4 hide-form">
-            <div class="quizWidthDiv maxWidth90">
-                @foreach ($getQuestions as $key => $item)
-                    <div class="hidden" id="removeAddClassHidden{{ $key }}">
+        <form method="post" action="{{ route('submit_quiz') }}">
+            @csrf
+
+            <section id="quiz-window" class="container-fluid mt-4 hide-form">
+                <div class="quizWidthDiv maxWidth90">
+                    @foreach ($getQuestions as $key => $item)
+                        <div class="hidden" id="removeAddClassHidden{{ $key }}">
 
 
-                        <div class="mb-3">
-                            {{ $item->catgeory->name }}
-                        </div>
-                        <div>
-                            <p><label for="" id="question-id" class="mr-4">{{ $key + 1 }}</label> <span
-                                    class="question">{{ $item->QuestionText }}</span> </span></p>
-                            <div class="row ml-4">
-                                @foreach ($item->options as $key2 => $item2)
-                                    <div class="col-lg-6">
-                                        <p>
-                                            <input type="radio" id="q1_opt{{ $key }}{{ $key2 }}"
-                                                required class="mr-3" name="q{{ $key }}_answer">
-                                            <label
-                                                for="q1_opt{{ $key }}{{ $key2 }}">{{ $item2->answer }}</label>
-                                        </p>
-                                    </div>
-                                @endforeach
+                            <div class="mb-3">
+                                {{ $item->catgeory->name }}
+                            </div>
+                            <div>
+                                <p><label for="" id="question-id" class="mr-4">{{ $key + 1 }}</label>
+                                    <span class="question">{{ $item->QuestionText }}</span> </span></p>
+                                <div class="row ml-4">
+                                    @foreach ($item->options as $key2 => $item2)
+                                        <div class="col-lg-6">
+                                            <p>
+                                                <input type="radio" id="q1_opt{{ $key }}{{ $key2 }}"
+                                                    required class="mr-3" name="q{{ $key }}_answer">
+                                                <label
+                                                    for="q1_opt{{ $key }}{{ $key2 }}">{{ $item2->answer }}</label>
+                                            </p>
+                                        </div>
+                                    @endforeach
 
+
+                                </div>
 
                             </div>
+                        </div>
+                    @endforeach
 
+
+                    <div class="nextPrevBtnDiv">
+                        <button type="button" class="nextPrevBtns previousButtonClick" id="prev-btn">Previous</button>
+                        <button type="button" class="nextPrevBtns nextButtonClick " id="next-btn">Next</button>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!-----------------Quiz Window End Here----------->
+
+            <section id="companyScreen" class="maxWidth90 mt-60 hide-form">
+                <div class="companyInpDivs">
+                    <div>
+                        Company Name:
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Input" required id="company_name" name="company_name">
+                    </div>
+                </div>
+                <div class="companyInpDivs mt-4">
+                    <div>
+                        Industry Area:
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Combo" required id="industry_area" name="industry_area">
+                    </div>
+                </div>
+                <div class="mt-60">
+                    <div class="companyInpDivs">
+                        <div></div>
+                        <div>
+                            <button type="button" class="nextPrevBtns downloadButton" id="">Download</button>
                         </div>
                     </div>
-                @endforeach
-
-
-                <div class="nextPrevBtnDiv">
-                    <button type="button" class="nextPrevBtns previousButtonClick" id="prev-btn">Previous</button>
-                    <button type="button" class="nextPrevBtns nextButtonClick " id="next-btn">Next</button>
-
                 </div>
-
-            </div>
-
-        </section>
-        <!-----------------Quiz Window End Here----------->
-
-        <section id="companyScreen" class="maxWidth90 mt-60 hide-form">
-            <div class="companyInpDivs">
-                <div>
-                    Company Name:
-                </div>
-                <div>
-                    <input type="text" placeholder="Input" required id="company_name" name="company_name">
-                </div>
-            </div>
-            <div class="companyInpDivs mt-4">
-                <div>
-                    Industry Area:
-                </div>
-                <div>
-                    <input type="text" placeholder="Combo" required id="industry_area" name="industry_area">
-                </div>
-            </div>
-            <div class="mt-60">
+            </section>
+            <section id="lastScreen" class="maxWidth90 mt-4 hide-form">
+                <p>
+                    Do you wish a personal discussion on this or other transformation topics?
+                </p>
                 <div class="companyInpDivs">
-                    <div></div>
                     <div>
-                        <button type="button" class="nextPrevBtns downloadButton" id="">Download</button>
+                        Name:
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Input" name="name">
                     </div>
                 </div>
-            </div>
-        </section>
-        <section id="lastScreen" class="maxWidth90 mt-4 hide-form">
-            <p>
-                Do you wish a personal discussion on this or other transformation topics?
-            </p>
-            <div class="companyInpDivs">
-                <div>
-                    Name:
-                </div>
-                <div>
-                    <input type="text" placeholder="Input" name="name">
-                </div>
-            </div>
-            <div class="companyInpDivs mt-4">
-                <div>
-                    Function:
-                </div>
-                <div>
-                    <input type="text" placeholder="Combo" name="function">
-                </div>
-            </div>
-            <div class="companyInpDivs mt-4">
-                <div>
-                    Phone Number:
-                </div>
-                <div>
-                    <input type="phone" placeholder="Input" name="phone">
-                </div>
-            </div>
-            <div class="companyInpDivs mt-4">
-                <div>
-                    Email:
-                </div>
-                <div>
-                    <input type="email" placeholder="Input" name="email">
-                </div>
-            </div>
-            <div class="mt-60">
-                <div class="companyInpDivs">
-                    <div></div>
+                <div class="companyInpDivs mt-4">
                     <div>
-                        <button type="button" class="nextPrevBtns" id="submit-btn">Submit</button>
+                        Function:
+                    </div>
+                    <div>
+                        <input type="text" placeholder="Combo" name="function">
                     </div>
                 </div>
-            </div>
-        </section>
+                <div class="companyInpDivs mt-4">
+                    <div>
+                        Phone Number:
+                    </div>
+                    <div>
+                        <input type="phone" placeholder="Input" name="phone">
+                    </div>
+                </div>
+                <div class="companyInpDivs mt-4">
+                    <div>
+                        Email:
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Input" name="email">
+                    </div>
+                </div>
+                <div class="mt-60">
+                    <div class="companyInpDivs">
+                        <div></div>
+                        <div>
+                            <button type="submit" class="nextPrevBtns" id="submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+
     </div>
     <script src="{{ asset('app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
@@ -295,6 +301,8 @@
                         // link.href = window.URL.createObjectURL(blob);
                         link.download = "quiz.pdf";
                         link.click();
+                        $("#lastScreen").removeClass('hide-form');
+                        $("#companyScreen").addClass('hide-form');
                     },
                     error: function() {
 
