@@ -26,7 +26,7 @@ class FrontendController extends Controller
         $path = public_path('pdf/');
         $fileName =  'test'.'.'. 'pdf' ;
         $pdf->save($path . '/' . $fileName);
-   
+
         $pdf = public_path('pdf/'.$fileName);
         return response()->download($pdf);
 
@@ -43,6 +43,6 @@ class FrontendController extends Controller
 
     public function pdfview() {
 
-        return view('pdf.index');
+        return view('pdf.pdf');
     }
 }
